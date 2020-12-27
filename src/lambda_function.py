@@ -1,6 +1,5 @@
 import pandas as pd
 import calendar
-import json
 from linebot import LineBotApi
 from linebot.models import (
     MessageEvent, TextMessage, QuickReplyButton, MessageAction, QuickReply, TextSendMessage)
