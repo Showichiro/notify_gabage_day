@@ -75,11 +75,11 @@ def is_gabage_day(area: str, nth_dow: tuple, gabage_name: str) -> bool:
 
 
 def convert_gabage_name_en_to_ja(gabage_name: str) -> str:
-    if gabage_name is 'burnable':
+    if gabage_name == 'burnable':
         return "燃やすごみ"
-    elif gabage_name is 'unburnable':
+    elif gabage_name == 'unburnable':
         return '燃やさないごみ'
-    elif gabage_name is 'recycle':
+    elif gabage_name == 'recycle':
         return '資源ごみ'
 
 
