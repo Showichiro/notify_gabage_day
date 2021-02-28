@@ -30,7 +30,7 @@ def lambda_handler(event, content):
     if datetime_now.hour <= 12:
         message = '今日は' + create_message(area, datetime_now)
     else:
-        datetime_tomorrow = datetime_now.replace(day=(datetime_now.day+1))
+        datetime_tomorrow = datetime_now + timedelta(days=1)
         message = '明日は' + create_message(area, datetime_tomorrow)
     if default_message in message:
         print('no message')
@@ -79,13 +79,14 @@ def convert_gabage_name_en_to_ja(gabage_name: str) -> str:
         return "燃やすごみ"
     elif gabage_name == 'unburnable':
         return '燃やさないごみ'
-    elif gabage_name == 'recycle':
+    else:
         return '資源ごみ'
 
 
 def push_message(user_id: str, message: str) -> dict:
     return line_bot_api.push_message(user_id, TextSendMessage(text=message))
 
-def convert_number_to_week(number:int) -> str:
+
+def convert_number_to_week(number: int) -> str:
     locale.setlocale(locale.LC_TIME, 'en_US.UTF-8')
     return calendar.day_name[number]
